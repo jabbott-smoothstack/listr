@@ -16,5 +16,11 @@
 			<h4>New User?</h4>
 			<a href ="signup.jsp">Sign Up</a>
 		</div>
+		
+		<script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.js"></script>
+		<script src = "static/js/app.js"></script>
+		<script src = "static/js/listr.service.js"></script>
+		<script src = "static/js/listr.controller.js"></script>
+		
 	</body>
 </html>

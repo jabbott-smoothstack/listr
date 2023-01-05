@@ -22,7 +22,7 @@ public class Category {
 	}
 	
 	public Long getCategoryId() {
-		return categoryId;
+		return category_id;
 	}
 	
 	public String getCategoryName() {
