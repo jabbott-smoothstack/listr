@@ -5,12 +5,12 @@
 	</head>
 	<body>
 		<h2 id="logo">Listr</h2>
-		<div class="form-box">
-			<input type="text" placeholder="Email Address" />
+		<div class="form-box" ng-controller = "ListrUserController as controller">
+			<input type="text" ng-model = "controller.email" placeholder="Email Address" />
 			<br />
-			<input type="password" placeholder="Password" />
+			<input type="password" ng-model = "controller.password" placeholder="Password" />
 			<br />
-			<button name="signin">Sign In</button>
+			<button name="signin" ng-click = "controller.loginUser(email, password)">Sign In</button>
 		</div>
 		<div class = "center-box">
 			<h4>New User?</h4>

@@ -2,33 +2,28 @@
  * Listr AngularJS controller
  */
 
- app.controller("listrController", function($scope, $http) {
-	 $scope.getUser = function(id) {
-		 $http({
-			method: "GET",
-			url: "/api/user/" + id,
-		 }).then(function(response) {
-			console.log(response);
-		 });
-	 }
-	 
-	 $scope.loginUser = function(email, passwordHash) {
-		 $http({
-			 method: "POST",
-			 url: "/api/user/login",
-			 data: {userEmail: email, password: passwordHash}
-		 }).then(function(response) {
-			console.log(response); 
-		 });
-	 }
-	 
-	 $scope.registerUser = function(userData) {
-		 $http({
-			method: "POST",
-			url: "/api/user/",
-			data: userData 
-		 }).then(function(response) {
-			 console.log(response);
-		 });
-	 };
- });
+'use strict';
+
+ app.controller("ListrUserController", ['$scope', 'ListrUserService', function($scope, ListrUserService) {
+	 	
+	 	var self = this;
+	 	self.loginUser = loginUser;
+	 	self.createUser = createUser;
+	 	self.email = "";
+	 	self.password = "";
+	 	
+	 	function createUser(firstname, lastname, email, password) {
+			 ListrUserService.createUser(firstname, lastname, email, password).then(function(response){
+				 console.log(response);
+			 });
+		 }
+		 
+		 function loginUser(email, password) {
+			 console.log("user login");
+			 ListrUserService.loginUser(email, password).then(function(response) {
+				console.log("login user");
+				console.log(response); 
+			 });
+		 }
+	 }]
+ );

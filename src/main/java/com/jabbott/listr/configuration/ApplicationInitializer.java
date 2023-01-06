@@ -1,6 +1,7 @@
 package com.jabbott.listr.configuration;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
+import javax.servlet.Filter;
 
 public class ApplicationInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
@@ -18,5 +19,11 @@ public class ApplicationInitializer extends AbstractAnnotationConfigDispatcherSe
 	protected String[] getServletMappings() {
 		return new String[] {"/"};
 	}
+	
+	@Override
+    protected Filter[] getServletFilters() {
+        Filter [] singleton = { new CORSFilter() };
+        return singleton;
+    }
 
 }
