@@ -4,4 +4,4 @@
 
  'use strict';
  
- var app = angular.module("listrApp", []);
+ var app = angular.module('listrApp', []);

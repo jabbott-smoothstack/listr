@@ -1,20 +1,33 @@
 <html>
 	<head>
 		<title>Listr</title>
+		<link rel="stylesheet" href="/static/css/bootstrap.min.css">
 		<link rel="stylesheet" href="/static/css/style.css">
 	</head>
-	<body>
-		<h2 id="logo">Listr</h2>
+	<body ng-app = "listrApp">
+		<h2 class="logo">Listr</h2>
 		<div class="form-box" ng-controller = "ListrUserController as controller">
-			<input type="text" ng-model = "controller.email" placeholder="Email Address" />
-			<br />
-			<input type="password" ng-model = "controller.password" placeholder="Password" />
-			<br />
-			<button name="signin" ng-click = "controller.loginUser(email, password)">Sign In</button>
+			<form action = "api/user/login/", method = "POST">
+				<div class = "row">
+					<input type="text" class = "center-input" placeholder="Email Address" name = "email"/>
+				</div>
+				<div class = "row">
+					<input type="password" class = "center-input" placeholder="Password" name = "password"/>
+				</div>
+				<div class = "row">
+					<input class = "btn btn-primary signup-button-center" type = "submit" value = "Sign In" />
+				</div>
+			</form>
 		</div>
 		<div class = "center-box">
-			<h4>New User?</h4>
-			<a href ="signup.jsp">Sign Up</a>
+			<div class = "col-mb-3">
+				<div class = "row">
+				<h4>New User?</h4>
+			</div>
+				<div class = "row">
+					<a href ="signup.jsp">Sign Up</a>
+				</div>
+			</div>
 		</div>
 		
 		<script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.js"></script>
