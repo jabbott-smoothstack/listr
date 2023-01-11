@@ -1,4 +1,5 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 	<head>
 		<title>Listr</title>
 		<link rel="stylesheet" href="/static/css/bootstrap.min.css">
@@ -7,7 +8,8 @@
 	<body ng-app = "listrApp">
 		<h2 class="logo">Listr</h2>
 		<div class="form-box" ng-controller = "ListrUserController as controller">
-			<form action = "api/user/login/", method = "POST">
+			<h4>Sign In</h4>
+			<form action = "api/user/login/" method = "POST">
 				<div class = "row">
 					<input type="text" class = "center-input" placeholder="Email Address" name = "email"/>
 				</div>
