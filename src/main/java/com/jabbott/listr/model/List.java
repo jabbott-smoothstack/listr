@@ -1,12 +1,31 @@
 package com.jabbott.listr.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+
+@Entity
+@Table(name = "list")
 public class List {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long list_id;
+	
+	@NotNull
+	@Column(name = "list_user_id")
 	private Long list_user_id;
+	
+	@NotNull
+	@Column(name = "list_name")
 	private String list_name;
 	
 	public List() {
-		list_id = 0L;
+		
 	}
 	
 	public void setListId(Long listId) {

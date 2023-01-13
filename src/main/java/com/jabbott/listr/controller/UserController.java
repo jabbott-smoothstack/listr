@@ -27,7 +27,7 @@ public class UserController {
 
 	@GetMapping(value = "/api/user/{userId}")
 	public ResponseEntity<User> getUserById(@PathVariable Long userId) {
-		return new ResponseEntity<User>(HttpStatus.OK);
+		return new ResponseEntity<User>(userService.getUserById(userId), HttpStatus.OK);
 	}
 
 	@PostMapping(value = "/api/user/login")
@@ -35,12 +35,15 @@ public class UserController {
 		ModelAndView view = new ModelAndView("listspage");
 		ModelAndView errorView = new ModelAndView("error");
 		
-		if(userLogin.getEmail() == "" | userLogin.getPassword() == "") {
+		if(userLogin.getEmail() == "" || userLogin.getPassword() == "") {
 			return errorView;
 		}
-		else {
+		
+		if(userService.getUserByEmail(userLogin.getEmail()).getPasswordHash() == userLogin.getPassword()) {
 			return view;
 		}
+		
+		return errorView;
 	}
 
 	@PostMapping(value = "/api/user/")
@@ -48,8 +51,12 @@ public class UserController {
 		if (newUserInfo.get("e") == "" || newUserInfo.get("f") == "" || newUserInfo.get("p") == "") {
 			return new ResponseEntity<User>(HttpStatus.BAD_REQUEST);
 		} else {
-			User newUser = userService.createUser(newUserInfo);
-			return new ResponseEntity<User>(newUser, HttpStatus.CREATED);
+			User newUser = new User();
+			newUser.setEmail(newUserInfo.get("e"));
+			newUser.setFirstName(newUserInfo.get("f"));
+			newUser.setLastName(newUserInfo.get("l"));
+			newUser.setPasswordHash(newUserInfo.get("p"));
+			return new ResponseEntity<User>(userService.createUser(newUser), HttpStatus.CREATED);
 		}
 
 	}

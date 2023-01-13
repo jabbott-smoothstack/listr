@@ -1,12 +1,31 @@
 package com.jabbott.listr.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+
+@Entity
+@Table(name = "item")
 public class Item {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long item_id;
+	
+	@NotNull
+	@Column(name = "item_name")
 	private String item_name;
+	
+	@NotNull
+	@Column(name = "item_category_id")
 	private Long item_category_id;
 	
 	public Item() {
-		item_id = 0L;
+		
 	}
 	
 	public void setItemId(Long itemId) {

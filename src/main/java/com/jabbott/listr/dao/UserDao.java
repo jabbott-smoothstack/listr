@@ -1,35 +1,50 @@
 package com.jabbott.listr.dao;
 
+import java.util.List;
+
+import javax.persistence.Query;
+import javax.transaction.Transactional;
+import org.hibernate.Criteria;
 import com.jabbott.listr.model.User;
 
-public class UserDao implements Dao<User> {
+@Transactional
+public class UserDao extends AbstractSession implements Dao<User> {
 
-	private String firstName;
-	private String email;
-	
 	@Override
-	public UserDao convertFromModel(User model) {
-		this.firstName = model.getFirstName();
-		this.email = model.getEmail();
-		return this;
-	}
-	
-	public void setFirstName(String fn) {
-		firstName = fn;
-	}
-	
-	public void setEmail(String em) {
-		email = em;
-	}
-	
-	public String getFirstName() {
-		return firstName;
-	}
-	
-	public String getEmail() {
-		return email;
+	public User save(User model) {
+		getSession().persist(model);
+		return model;
 	}
 
+	@Override
+	public User findById(Long id) {
+		String query = "FROM user WHERE user.user_id = ?1";
+		Query q = getSession().createQuery(query);
+		q.setParameter(1, id);
+		return (User) q.getSingleResult();
+	}
+
+	@Override
+	public User deleteById(Long id) {
+		User userToDelete = findById(id);
+		getSession().delete(userToDelete);
+		return userToDelete;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<User> findAll() {
+		@SuppressWarnings("deprecation")
+		Criteria criteria = getSession().createCriteria(User.class);
+		return (List<User>) criteria.list();
+	}
+	
+	public User findUserByEmail(String email) {
+		String query = "FROM user WHERE user.email = ?1";
+		Query q = getSession().createQuery(query);
+		q.setParameter(1, email);
+		return (User) q.getSingleResult();
+	}
 	
 	
 
