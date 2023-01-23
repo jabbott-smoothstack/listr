@@ -31,19 +31,11 @@ import org.springframework.web.servlet.view.JstlView;
 @EnableWebMvc
 @ComponentScan(basePackages = "com.jabbott.listr")
 public class ApplicationConfiguration implements WebMvcConfigurer {
-	  @Bean
-	  public InternalResourceViewResolver viewResolver() {
-	    InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
-	    viewResolver.setViewClass(JstlView.class);
-	    viewResolver.setPrefix("/WEB-INF/views/");
-	    viewResolver.setSuffix(".jsp");
-	    return viewResolver;
-	  }
 	  
-	  @Override
-	  public void addResourceHandlers(ResourceHandlerRegistry registry) {
-		  registry.addResourceHandler("/static/**").addResourceLocations("/static/");
-	  }
+	@Override
+	public void addResourceHandlers(ResourceHandlerRegistry registry) {
+		registry.addResourceHandler("/static/**").addResourceLocations("/static/");
+	}
 
 	@Override
 	public void addFormatters(FormatterRegistry registry) {
@@ -130,8 +122,11 @@ public class ApplicationConfiguration implements WebMvcConfigurer {
 
 	@Override
 	public void configureViewResolvers(ViewResolverRegistry registry) {
-		// TODO Auto-generated method stub
-		
+		InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
+		viewResolver.setPrefix("/WEB-INF/views/");
+		viewResolver.setViewClass(JstlView.class);
+		viewResolver.setSuffix(".jsp");
+		registry.viewResolver(viewResolver);
 	}
 
 	@Override

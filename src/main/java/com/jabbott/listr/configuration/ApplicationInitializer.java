@@ -7,23 +7,17 @@ public class ApplicationInitializer extends AbstractAnnotationConfigDispatcherSe
 
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
-		return new Class[] {ApplicationConfiguration.class};
+		return new Class[] { HibernateConfiguration.class };
 	}
 
 	@Override
 	protected Class<?>[] getServletConfigClasses() {
-		return null;
+		return new Class[] {ApplicationConfiguration.class};
 	}
 
 	@Override
 	protected String[] getServletMappings() {
 		return new String[] {"/"};
 	}
-	
-	@Override
-    protected Filter[] getServletFilters() {
-        Filter [] singleton = { new CORSFilter() };
-        return singleton;
-    }
 
 }

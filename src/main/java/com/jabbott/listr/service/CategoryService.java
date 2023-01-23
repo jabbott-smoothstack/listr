@@ -1,36 +1,49 @@
 package com.jabbott.listr.service;
 
+import java.util.HashMap;
 import java.util.List;
+
+import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.jabbott.listr.dao.CategoryDao;
+import com.jabbott.listr.dto.CategoryDto;
+import com.jabbott.listr.dto.UpdateCategoryDto;
 import com.jabbott.listr.model.Category;
 
-@Service
+@Service("categoryService")
+@Transactional
 public class CategoryService {
-	
+
 	@Autowired
 	private CategoryDao categoryDao;
 	
-	// TODO Refactor this method
-	public Category createCategory(Category newCategory) {
-		if(categoryDao.findById(newCategory.getCategoryId()) == null) {
-			return categoryDao.save(newCategory);
-		}
-		else return null;
+	public Category createCategory(CategoryDto newCategoryInfo) {
+		Category newCategory = new Category();
+		newCategory.setCategoryName(newCategoryInfo.getCategoryName());
+		newCategory.setCategoryListId(newCategoryInfo.getCategoryListId());
+		categoryDao.save(newCategory);
+		return newCategory;
 	}
 	
-	public Category findCategoryById(Long categoryId) {
-		return categoryDao.findById(categoryId);
+	public Category findCategoryById(Long id) {
+		return categoryDao.findById(id);
 	}
 	
-	public List<Category> findCategoriesByListId(Long listId) {
-		return categoryDao.findAllByListId(listId);
+	public List<Category> findCategoryByListId(Long id) {
+		return categoryDao.findAllCategoriesByListId(id);
 	}
 	
-	public Category deleteListById(Long categoryId) {
-		return categoryDao.deleteById(categoryId);
+	public Category deleteCategory(Long categoryId) {
+		Category toDelete = findCategoryById(categoryId);
+		categoryDao.delete(toDelete);
+		return toDelete;
+	}
+	
+	public Category updateCategory(UpdateCategoryDto updateCategoryDto) {
+		categoryDao.editCategory(updateCategoryDto);
+		return categoryDao.findById(updateCategoryDto.getCategoryId());
 	}
 }

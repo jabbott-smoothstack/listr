@@ -14,6 +14,7 @@ public class List {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "list_id")
 	private Long list_id;
 	
 	@NotNull

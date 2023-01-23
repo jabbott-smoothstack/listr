@@ -2,50 +2,42 @@ package com.jabbott.listr.dao;
 
 import java.util.List;
 
-import javax.persistence.Query;
-import javax.transaction.Transactional;
-import org.hibernate.Criteria;
+import org.springframework.stereotype.Repository;
+
 import com.jabbott.listr.model.User;
 
-@Transactional
+@Repository("userDao")
 public class UserDao extends AbstractSession implements Dao<User> {
 
 	@Override
-	public User save(User model) {
-		getSession().persist(model);
-		return model;
+	public User save(User object) {
+		getSession().persist(object);
+		return object;
+	}
+
+	@Override
+	public User delete(User object) {
+		getSession().delete(object);
+		return object;
 	}
 
 	@Override
 	public User findById(Long id) {
-		String query = "FROM user WHERE user.user_id = ?1";
-		Query q = getSession().createQuery(query);
-		q.setParameter(1, id);
-		return (User) q.getSingleResult();
+		String query_str = "FROM User WHERE user_id = ?1";
+		User retrievedUser = (User) getSession().createQuery(query_str).setParameter(1, id).uniqueResult();
+		return retrievedUser;
 	}
 
-	@Override
-	public User deleteById(Long id) {
-		User userToDelete = findById(id);
-		getSession().delete(userToDelete);
-		return userToDelete;
-	}
-
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings({ "deprecation", "unchecked" })
 	@Override
 	public List<User> findAll() {
-		@SuppressWarnings("deprecation")
-		Criteria criteria = getSession().createCriteria(User.class);
-		return (List<User>) criteria.list();
+		return (List<User>) getSession().createCriteria(User.class).list();
 	}
 	
-	public User findUserByEmail(String email) {
-		String query = "FROM user WHERE user.email = ?1";
-		Query q = getSession().createQuery(query);
-		q.setParameter(1, email);
-		return (User) q.getSingleResult();
+	public User findByEmail(String email) {
+		String query_str = "FROM User WHERE email = ?1";
+		User retrievedUser = (User) getSession().createQuery(query_str).setParameter(1, email).getSingleResult();
+		return retrievedUser;
 	}
 	
-	
-
 }

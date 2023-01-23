@@ -1,45 +1,39 @@
 package com.jabbott.listr.service;
 
+import java.util.HashMap;
+
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import com.jabbott.listr.dao.UserDao;
 import com.jabbott.listr.model.User;
 
-@Service
+@Service("userService")
+@Transactional
 public class UserService {
 	
 	@Autowired
 	private UserDao userDao;
 	
-	public User createUser(User newUser) {
-		if(userDao.findById(newUser.getUserId()) == null) {
-			return userDao.save(newUser);
-		}
+	public User createUser(HashMap<String, String> userData) {
+		User user = new User();
+		user.setEmail(userData.get("e"));
+		user.setFirstName(userData.get("f"));
+		user.setLastName(userData.get("l"));
+		user.setPasswordHash(userData.get("p"));
 		
-		return null;
+		userDao.save(user);
+		
+		return user;
 	}
 	
-	public User findUserByEmailAddress(String email) {
-		return userDao.findUserByEmail(email);
-	}
-	
-	public User getUserById(Long id) {
+	public User findUserById(Long id) {
 		return userDao.findById(id);
 	}
 	
-	public User deleteUserById(Long id) {
-		return userDao.deleteById(id);
-	}
-	
-	public String authorizeUser(User userInfo) {
-		User userToCheck = userDao.findById(userInfo.getUserId());
-		if(userInfo.getPasswordHash() == userToCheck.getPasswordHash()) {
-			return "authorized";
-		}
-		return "unauthorized";
-	}
-	
-	public User getUserByEmail(String email) {
-		return userDao.findUserByEmail(email);
+	public User findUserByEmail(String email) {
+		return userDao.findByEmail(email);
 	}
 }

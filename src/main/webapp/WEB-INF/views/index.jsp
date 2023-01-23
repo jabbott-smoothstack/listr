@@ -27,7 +27,7 @@
 				<h4>New User?</h4>
 			</div>
 				<div class = "row">
-					<a href ="signup.jsp">Sign Up</a>
+					<a href ="/signup">Sign Up</a>
 				</div>
 			</div>
 		</div>

@@ -2,50 +2,49 @@ package com.jabbott.listr.dao;
 
 import java.util.List;
 
-import javax.persistence.Query;
-import javax.transaction.Transactional;
+import org.hibernate.criterion.Restrictions;
+import org.springframework.stereotype.Repository;
 
-import org.hibernate.Criteria;
-
+import com.jabbott.listr.dto.UpdateItemDto;
 import com.jabbott.listr.model.Item;
 
-@Transactional
+@Repository("itemDao")
 public class ItemDao extends AbstractSession implements Dao<Item>{
 
 	@Override
-	public Item save(Item model) {
-		getSession().persist(model);
-		return model;
+	public Item save(Item object) {
+		getSession().persist(object);
+		return object;
+	}
+
+	@Override
+	public Item delete(Item object) {
+		getSession().delete(object);
+		return object;
 	}
 
 	@Override
 	public Item findById(Long id) {
-		String query = "FROM item WHERE item.item_id = ?1";
-		Query q = getSession().createQuery(query);
-		q.setParameter(1, id);
-		return (Item) q.getSingleResult();
-	}
-
-	@Override
-	public Item deleteById(Long id) {
-		Item itemToDelete = findById(id);
-		getSession().delete(itemToDelete);
-		return itemToDelete;
+		String query_str = "FROM Item WHERE item_id = ?1";
+		return (Item) getSession().createQuery(query_str).setParameter(1, id).uniqueResult();
 	}
 
 	@SuppressWarnings({ "unchecked", "deprecation" })
 	@Override
 	public List<Item> findAll() {
-		Criteria criteria = getSession().createCriteria(Item.class);
-		return (List<Item>) criteria.list();
+		return (List<Item>) getSession().createCriteria(Item.class).list();
 	}
 	
 	@SuppressWarnings("unchecked")
 	public List<Item> findAllByCategoryId(Long categoryId) {
-		String query = "FROM item WHERE item.item_category_id = ?1";
-		Query q = getSession().createQuery(query);
-		q.setParameter(1, categoryId);
-		return (List<Item>) q.getResultList();
+		return (List<Item>) getSession().createCriteria(Item.class).add(Restrictions.eq("item_category_id", categoryId)).list();
+	}
+	
+	public int editItem(UpdateItemDto updateItemDto) {
+		System.out.println(updateItemDto.getItemName());
+		System.out.println(updateItemDto.getItemId());
+		String query_str = "UPDATE Item SET item_name = ?1 WHERE item_id = ?2";
+		return getSession().createQuery(query_str).setParameter(1, updateItemDto.getItemName()).setParameter(2, updateItemDto.getItemId()).executeUpdate();
 	}
 
 }

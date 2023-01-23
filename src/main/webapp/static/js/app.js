@@ -4,4 +4,4 @@
 
  'use strict';
  
- const app = angular.module('listrApp', []);
+ const app = angular.module('listrApp', ['ngCookies']);

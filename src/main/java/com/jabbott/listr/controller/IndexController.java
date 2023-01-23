@@ -2,25 +2,22 @@ package com.jabbott.listr.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/")
 public class IndexController {
 	
-	@GetMapping
+	@GetMapping("/")
 	public String getIndex() {
 		return "index";
 	}
 	
-	@GetMapping(value = "api/user/login")
-	public String getLogin() {
-		return "login";
+	@GetMapping("/signup")
+	public String getSignup() {
+		return "signup";
 	}
 	
-	@GetMapping(value = "listpage/")
-	public String getListPage() {
-		return "login";
+	@GetMapping("/listpage")
+	public String getListpage() {
+		return "listpage";
 	}
 }
