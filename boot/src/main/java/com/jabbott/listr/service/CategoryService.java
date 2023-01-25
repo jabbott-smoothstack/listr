@@ -3,6 +3,8 @@ package com.jabbott.listr.service;
 import java.util.List;
 import java.util.Optional;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,13 +14,14 @@ import com.jabbott.listr.model.Category;
 import com.jabbott.listr.repository.CategoryRepository;
 
 @Service
+@Transactional
 public class CategoryService {
 	
 	@Autowired
 	private CategoryRepository categoryRepository;
 
 	public List<Category> getCategoriesByListId(Long id) {
-		return categoryRepository.findCategoriesByListId(id);
+		return categoryRepository.findCategoriesByCategoryListId(id);
 	}
 
 	public Category createNewCategory(NewCategoryDto newCategoryDto) {

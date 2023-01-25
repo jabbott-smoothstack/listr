@@ -2,6 +2,8 @@ package com.jabbott.listr.service;
 
 import java.util.Optional;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,13 +13,14 @@ import com.jabbott.listr.model.List;
 import com.jabbott.listr.repository.ListRepository;
 
 @Service
+@Transactional
 public class ListService {
 
 	@Autowired
 	private ListRepository listRepository;
 	
 	public java.util.List<List> getListsByUserId(Long userId) {
-		return listRepository.findListsByUserId(userId);
+		return listRepository.findListsByListUserId(userId);
 	}
 
 	public List createNewList(NewListDto newListDto) {

@@ -10,6 +10,6 @@ import com.jabbott.listr.model.Item;
 @Repository
 public interface ItemRepository extends JpaRepository<Item, Long> {
 
-	List<Item> findItemsByCategoryId(Long categoryId);
+	List<Item> findItemsByItemCategoryId(Long categoryId);
 
 }

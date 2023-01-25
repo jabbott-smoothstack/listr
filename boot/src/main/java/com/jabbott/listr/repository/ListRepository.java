@@ -8,6 +8,6 @@ import com.jabbott.listr.model.List;
 @Repository
 public interface ListRepository extends JpaRepository<List, Long> {
 
-	java.util.List<List> findListsByUserId(Long userId);
+	java.util.List<List> findListsByListUserId(Long userId);
 
 }
