@@ -6,10 +6,10 @@
 	ListService.$inject = ['$http', '$q'];
 	
 	function ListService($http, $q) {
-		const LIST_SERVICE_URI = "/api/list/";
-		const USER_SERVICE_URI = "/api/user/";
-		const CATEGORY_SERVICE_URI = "/api/category/";
-		const ITEM_SERVICE_URI = "/api/item/"
+		const LIST_SERVICE_URI = "http://localhost:8081/api/list/";
+		const USER_SERVICE_URI = "http://localhost:8081/api/user/";
+		const CATEGORY_SERVICE_URI = "http://localhost:8081/api/category/";
+		const ITEM_SERVICE_URI = "http://localhost:8081/api/item/"
 		
 		var factory = {
 			getUserFirstName: getUserFirstName,
@@ -175,12 +175,12 @@
 			return deferred.promise;
 		}
 		
-		function createCategory(newCategoryName, listId) {
+		function createCategory(newCategoryName, categoryListId) {
 			var deferred = $q.defer();
 			$http({
 				method: 'POST',
 				url: CATEGORY_SERVICE_URI,
-				data: {categoryName: newCategoryName, categoryListId: listId}
+				data: {listId: categoryListId, categoryName: newCategoryName}
 			}).then(function(response) {
 				deferred.resolve(response.data);
 			});
@@ -188,12 +188,12 @@
 			return deferred.promise;
 		}
 		
-		function createItem(currentCategoryId, newItemName) {
+		function createItem(currentCategoryId, itemName) {
 			var deferred = $q.defer();
 			$http({
 				method: 'POST',
 				url: ITEM_SERVICE_URI,
-				data: {itemName: newItemName, categoryId: currentCategoryId}
+				data: {newItemName: itemName, itemCategoryId: currentCategoryId}
 			}).then(function(response) {
 				deferred.resolve(response.data);
 			});

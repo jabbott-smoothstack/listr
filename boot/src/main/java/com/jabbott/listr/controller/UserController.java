@@ -1,11 +1,14 @@
 package com.jabbott.listr.controller;
 
+import java.util.HashMap;
+
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,6 +22,7 @@ import com.jabbott.listr.service.UserService;
 
 
 @RestController
+@CrossOrigin(origins = "http://localhost:8080")
 public class UserController {
 	
 	@Autowired
@@ -39,8 +43,9 @@ public class UserController {
 		return new ResponseEntity<User>(userService.createUser(newUserDto), HttpStatus.CREATED);
 	}
 	
-	@GetMapping(value = "/api/user/{email}")
-	public ResponseEntity<User> getUserByEmail(@PathVariable String email) {
-		return new ResponseEntity<User>(userService.getUserByEmail(email), HttpStatus.OK);
+	@PostMapping(value = "/api/user/email")
+	public ResponseEntity<User> getUserByEmail(@RequestBody HashMap<String, String> email) {
+		System.out.println(email.get("email"));
+		return new ResponseEntity<User>(userService.getUserByEmail(email.get("email")), HttpStatus.OK);
 	}
 }

@@ -17,7 +17,7 @@ public class UpdateItemDto {
 		itemId = id;
 	}
 	
-	public void setItemName(String name) {
+	public void setNewItemName(String name) {
 		newItemName = name;
 	}
 	

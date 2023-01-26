@@ -34,4 +34,16 @@ public class Item {
 		itemCategoryId = id;
 	}
 	
+	public Long getItemId() {
+		return itemId;
+	}
+	
+	public String getItemName() {
+		return itemName;
+	}
+	
+	public Long getItemCategoryId() {
+		return itemCategoryId;
+	}
+	
 }

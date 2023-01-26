@@ -11,7 +11,7 @@
  
   function UserService($http, $q) {
 	 
-	 var USER_SERVICE_URI = "/api/user/"
+	 var USER_SERVICE_URI = "http://localhost:8081/api/user/"
 	 var factory = {
 		 createUser: createUser,
 		 loginUser: loginUser
@@ -36,13 +36,13 @@
 		 console.log(errResponse);
 	 }
 	 
-	 function createUser(firstname, lastname, email, password) {
+	 function createUser(f, l, e, p) {
 		 var deferred = $q.defer();
 		 
 		 $http({
 			 method: "POST",
 			 url: USER_SERVICE_URI,
-			 data: {f: firstname, l: lastname, e: email, p: password}
+			 data: {firstName: f, lastName: l, email: e, passwordHash: p}
 		 }).then(function(response) {
 			 createUserResolve(response);
 			 deferred.resolve(response.data);
@@ -53,13 +53,13 @@
 		 return deferred.promise;
 	 }
 	 
-	 function loginUser(email, password) {
+	 function loginUser(e, p) {
 		 var deferred = $q.defer();
 		 
 		 $http({
 			method:"POST",
 			url: USER_SERVICE_URI + "login/",
-			data: {e: email, p: password} 
+			data: {email: e, passwordHash: p} 
 		 }).then(deferred.resolve(response.data), logError(errorResponse));
 		 
 		 return deferred.promise;
