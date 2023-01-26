@@ -33,7 +33,7 @@ public class UserController {
 		User user = userService.getUserByEmail(userLoginDto.getEmail());
 		if(user != null && user.getPassword().compareTo(userLoginDto.getPasswordHash()) == 0) {
 			response.addCookie(new Cookie("user", user.getEmail()));
-			return new ResponseEntity<User>(HttpStatus.OK);
+			return new ResponseEntity<User>(user, HttpStatus.OK);
 		}
 		return new ResponseEntity<User>(HttpStatus.FORBIDDEN);
 	}
@@ -45,7 +45,6 @@ public class UserController {
 	
 	@PostMapping(value = "/api/user/email")
 	public ResponseEntity<User> getUserByEmail(@RequestBody HashMap<String, String> email) {
-		System.out.println(email.get("email"));
 		return new ResponseEntity<User>(userService.getUserByEmail(email.get("email")), HttpStatus.OK);
 	}
 }

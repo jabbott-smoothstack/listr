@@ -16,8 +16,8 @@ public class IndexController {
 		return "signup";
 	}
 	
-	@GetMapping("/listpage")
+	@GetMapping("/listspage")
 	public String getListpage() {
-		return "listpage";
+		return "listspage";
 	}
 }

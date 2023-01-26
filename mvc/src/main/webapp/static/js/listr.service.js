@@ -60,7 +60,9 @@
 			method:"POST",
 			url: USER_SERVICE_URI + "login/",
 			data: {email: e, passwordHash: p} 
-		 }).then(deferred.resolve(response.data), logError(errorResponse));
+		 }).then(function(response) {
+			 deferred.resolve(response)
+		 });
 		 
 		 return deferred.promise;
 	 }
