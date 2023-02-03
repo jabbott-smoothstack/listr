@@ -16,19 +16,19 @@
 						<h4>Sign Up</h4>
 						<div class = "col-md-12">
 							<div class = "row">
-								<input class = "center-input" type="text" placeholder="First Name" ng-model = "firstName" />
+								<input class = "center-input" type="text" placeholder="First Name" ng-model = "firstName" id = "firstName"/>
 							</div>
 							<div class = "row">
-								<input class = "center-input" type="text" placeholder="Last Name (optional)" ng-model = "lastName"/>
+								<input class = "center-input" type="text" placeholder="Last Name (optional)" ng-model = "lastName" id = "lastName"/>
 							</div>
 							<div class = "row">
-								<input class = "center-input" type="text" placeholder="Email Address" ng-model = "email"/>
+								<input class = "center-input" type="text" placeholder="Email Address" ng-model = "email" id = "email"/>
 							</div>
 							<div class = "row">
-								<input class = "center-input" type="password" placeholder="Password" ng-model = "password"/>
+								<input class = "center-input" type="password" placeholder="Password" ng-model = "password" id = "password" />
 							</div>
 							<div class = "row">
-								<button name="signup-button" class = "btn btn-primary signup-button-center" ng-click = "createUser(firstName, lastName, email, password)">Sign Up</button>
+								<button name="signup-button" class = "btn btn-primary signup-button-center" ng-click = "createUser(firstName, lastName, email, password)" id = "signupButton">Sign Up</button>
 							</div>
 						</div>
 					</div>	

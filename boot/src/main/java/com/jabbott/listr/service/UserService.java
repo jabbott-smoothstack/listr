@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.jabbott.listr.dto.NewUserDto;
-import com.jabbott.listr.dto.UserLoginDto;
 import com.jabbott.listr.model.User;
 import com.jabbott.listr.repository.UserRepository;
 
@@ -18,10 +17,6 @@ public class UserService {
 	
 	@Autowired
 	private UserRepository userRepository;
-
-	public User loginUser(UserLoginDto userLoginDto) {
-		return null;
-	}
 
 	public User createUser(NewUserDto newUserDto) {
 		User newUser = new User();

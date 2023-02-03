@@ -11,13 +11,13 @@
 			<h4>Sign In</h4>
 			
 			<div class = "row">
-				<input type="text" class = "center-input" placeholder="Email Address" name = "email" ng-model = "email"/>
+				<input type="text" class = "center-input" placeholder="Email Address" name = "email" id = "email" ng-model = "email"/>
 			</div>
 			<div class = "row">
-				<input type="password" class = "center-input" placeholder="Password" name = "password" ng-model = "password"/>
+				<input type="password" class = "center-input" placeholder="Password" name = "password" id = "password" ng-model = "password"/>
 			</div>
 			<div class = "row">
-				<input class = "btn btn-primary signup-button-center" type = "button" value = "Sign In" ng-click = "loginUser(email, password)" />
+				<input class = "btn btn-primary signup-button-center" type = "button" id = "signinButton" value = "Sign In" ng-click = "loginUser(email, password)" />
 			</div>
 		</div>
 		<div class = "center-box">
