@@ -46,9 +46,7 @@ public class WebappTests {
 	  driver.findElement(By.id("signinButton")).click();
 	  synchronized (driver) {
 		  driver.wait(1000);
-		  if(driver.getCurrentUrl().compareTo("http://localhost:8080/listspage") == 0) {
-			  return;
-		  } else Assert.fail();
+		  Assert.assertEquals(driver.getCurrentUrl(), "http://localhost:8080/listspage");
 	  }
 	  
   }
@@ -62,9 +60,9 @@ public class WebappTests {
 	  synchronized (driver) { 
 		  driver.wait(1000);
 		  driver.findElement(By.className("list-item")).click();
-		  if(driver.findElement(By.className("list-item")).isDisplayed()) {
-			  return;
-		  } else Assert.fail();
+		  
+		  Assert.assertEquals(driver.findElement(By.className("list-item")).isDisplayed(), true);
+		  
 	  }
 	  
   }
@@ -77,10 +75,9 @@ public class WebappTests {
 	  synchronized (driver) {
 		  driver.wait(1000);
 		  List<WebElement> categoryItems = driver.findElements(By.className("category-card"));
-		  if(categoryItems.size() > 0) {
-			  return;
-		  }
-		  else Assert.fail();
+		  
+		  Assert.assertEquals(categoryItems.size() > 0, true);
+		  
 	  }
 	  
   }
@@ -94,9 +91,9 @@ public class WebappTests {
 		  driver.findElement(By.id("addItemModalButton")).click();
 		  driver.wait(500);
 		  List<WebElement> listItems = driver.findElements(By.className("item"));
-		  if(listItems.size() > 0) {
-			  return;
-		  } else Assert.fail();
+		  
+		  Assert.assertEquals(listItems.size() > 0, true);
+		  
 	  }
   }
   
@@ -111,9 +108,9 @@ public class WebappTests {
 		  driver.get("http://localhost:8080/listspage");
 		  driver.wait(500);
 		  WebElement listElement = driver.findElement(By.className("listName"));
-		  if(listElement.getText().compareTo("Test List Edited") == 0) {
-			  return;
-		  } else Assert.fail();
+		  
+		  Assert.assertEquals(listElement.getText(), "Test List Edited");
+		  
 	  }
   }
   
@@ -129,9 +126,8 @@ public class WebappTests {
 		  driver.wait(500);
 		  WebElement categoryElement = driver.findElement(By.id("Test Category Edited"));
 		  
-		  if(categoryElement.getText().compareTo("Test Category Edited") == 0) {
-			  return;
-		  } else Assert.fail();
+		  Assert.assertEquals(categoryElement.getText(), "Test Category Edited");
+		  
 	  }
   }
   
@@ -151,9 +147,8 @@ public class WebappTests {
 		  driver.wait(500);
 		  WebElement itemElement = driver.findElement(By.className("itemName"));
 		  
-		  if(itemElement.getText().compareTo("Test Item Edited") == 0) {
-			  return;
-		  } else Assert.fail();
+		  Assert.assertEquals(itemElement.getText(), "Test Item Edited");
+		  
 	  }
   }
   
@@ -165,9 +160,9 @@ public class WebappTests {
 		  driver.findElement(By.id("Test Category Edited")).click();
 		  driver.wait(500);
 		  List<WebElement> listItems = driver.findElements(By.className("item"));
-		  if(listItems.size() == 0) {
-			  return;
-		  } else Assert.fail();
+		  
+		  Assert.assertEquals(listItems.size(), 0);
+		  
 	  }
   }
   
@@ -180,13 +175,10 @@ public class WebappTests {
 		  driver.get("http://localhost:8080/listspage");
 		  driver.wait(500);
 		  
-		  try {
-			  WebElement categoryElement = driver.findElement(By.id("Test Category Edited"));
-		  }
-		  catch(NoSuchElementException e) {
-			  return;
-		  }
-		  Assert.fail();
+		  
+		  Assert.expectThrows(NoSuchElementException.class, () -> {
+			  WebElement categoryItem = driver.findElement(By.id("Test Category Edited"));
+		  });
 		  
 	  }
   }
@@ -199,12 +191,11 @@ public class WebappTests {
 		  driver.wait(500);
 		  driver.get("http://localhost:8080/listspage");
 		  driver.wait(500);
-		  try {
-			  WebElement listElement = driver.findElement(By.className("list-item"));
-		  } catch(NoSuchElementException e) {
-			  return;
-		  }
-		  Assert.fail();
+		  
+		  Assert.expectThrows(NoSuchElementException.class, () -> {
+			  WebElement listItem = driver.findElement(By.className("list-item"));
+		  });
+		  
 	  }
   }
 
