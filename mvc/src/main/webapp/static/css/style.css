@@ -1,0 +1,112 @@
+@charset "ISO-8859-1";
+
+.logo {
+	font-size: 4rem;
+	padding: 1rem 1rem 1rem 1rem;
+}
+
+.welcome-message {
+	font-size: 1rem;
+	padding: 1rem 1rem 1rem 1rem;
+}
+
+.form-box {
+	width: 25%;
+	margin: auto;
+	padding: 2rem 5rem 2rem 5rem;
+	border: solid 1px #000000;
+	justify-content: center;
+	display: block;
+	border-radius: 10px;
+}
+
+.form-box input {
+	margin: 1rem 1rem 1rem 1rem;
+}
+
+.center {
+	width: 50%;
+	margin: auto;
+	text-align: center;
+}
+
+.center-input {
+	width: 100%;
+	margin: auto;
+}
+
+.signup-button-center {
+	width: 50%;
+	margin: auto;
+}
+
+.center-box {
+	margin: 1rem 1rem 1rem 1rem;
+	padding: 1rem 1rem 1rem 1rem;
+	display: flex;
+	justify-content: center;
+	text-align: center;	
+}
+
+.success-message {
+	display: none;
+	justify-content: center;
+	width: 100%;
+	margin: auto;
+}
+
+.failure-message {
+	display: none;
+	color: #ff0000;
+	justify-content: center;
+	width: 100%;
+	margin: auto;
+}
+
+.main-div {
+	border: solid 1px #000000;
+	display: block;
+	border-radius: 0 10px 10px 0;
+}
+
+.lists-div {
+	border: solid 1px #000000;
+	display: block;
+	border-radius: 10px 0 0 10px;
+}
+
+.content-row {
+	display: block;
+	width: 100%;
+	margin: 1rem 1rem 1rem 1rem;
+}
+
+.center-button {
+	margin: auto;
+	display: block;
+}
+
+.list-item {
+	margin: 0.5rem 0.5rem 0.5rem 0.5rem;
+	border: solid 1px #000000;
+	border-radius: 10px 10px 10px 10px;
+	padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+}
+
+.list-item:hover {
+	background-color: #cccccc;
+}
+
+.category-card {
+	width: 100%;
+	padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+}
+
+.item-list {
+	list-style-type: none;
+}
+
+.item {
+	width: 100%;
+	padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+}
