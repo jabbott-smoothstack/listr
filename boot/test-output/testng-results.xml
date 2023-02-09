@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="11" passed="11" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2023-02-09T15:16:01 CST" name="Default suite" finished-at="2023-02-09T15:16:21 CST" duration-ms="20297">
+    <groups>
+    </groups>
+    <test started-at="2023-02-09T15:16:01 CST" name="Default test" finished-at="2023-02-09T15:16:21 CST" duration-ms="20297">
+      <class name="com.jabbott.listr.WebappTests">
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.jabbott.listr.WebappTests@5f9edf14]" started-at="2023-02-09T15:16:01 CST" name="setup" finished-at="2023-02-09T15:16:04 CST" duration-ms="3390" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="signupUser()[pri:1, instance:com.jabbott.listr.WebappTests@5f9edf14]" started-at="2023-02-09T15:16:04 CST" name="signupUser" finished-at="2023-02-09T15:16:06 CST" duration-ms="2206" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- signupUser -->
+        <test-method signature="userLogin()[pri:2, instance:com.jabbott.listr.WebappTests@5f9edf14]" started-at="2023-02-09T15:16:06 CST" name="userLogin" finished-at="2023-02-09T15:16:08 CST" duration-ms="1546" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- userLogin -->
+        <test-method signature="createList()[pri:3, instance:com.jabbott.listr.WebappTests@5f9edf14]" started-at="2023-02-09T15:16:08 CST" name="createList" finished-at="2023-02-09T15:16:09 CST" duration-ms="1291" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- createList -->
+        <test-method signature="createCategory()[pri:4, instance:com.jabbott.listr.WebappTests@5f9edf14]" started-at="2023-02-09T15:16:09 CST" name="createCategory" finished-at="2023-02-09T15:16:10 CST" duration-ms="1246" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- createCategory -->
+        <test-method signature="createItem()[pri:5, instance:com.jabbott.listr.WebappTests@5f9edf14]" started-at="2023-02-09T15:16:10 CST" name="createItem" finished-at="2023-02-09T15:16:12 CST" duration-ms="1726" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- createItem -->
+        <test-method signature="editList()[pri:6, instance:com.jabbott.listr.WebappTests@5f9edf14]" started-at="2023-02-09T15:16:12 CST" name="editList" finished-at="2023-02-09T15:16:13 CST" duration-ms="1279" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- editList -->
+        <test-method signature="editCategory()[pri:7, instance:com.jabbott.listr.WebappTests@5f9edf14]" started-at="2023-02-09T15:16:13 CST" name="editCategory" finished-at="2023-02-09T15:16:15 CST" duration-ms="1298" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- editCategory -->
+        <test-method signature="editItem()[pri:8, instance:com.jabbott.listr.WebappTests@5f9edf14]" started-at="2023-02-09T15:16:15 CST" name="editItem" finished-at="2023-02-09T15:16:17 CST" duration-ms="1895" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- editItem -->
+        <test-method signature="deleteItem()[pri:9, instance:com.jabbott.listr.WebappTests@5f9edf14]" started-at="2023-02-09T15:16:17 CST" name="deleteItem" finished-at="2023-02-09T15:16:18 CST" duration-ms="1119" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- deleteItem -->
+        <test-method signature="deleteCategory()[pri:10, instance:com.jabbott.listr.WebappTests@5f9edf14]" started-at="2023-02-09T15:16:18 CST" name="deleteCategory" finished-at="2023-02-09T15:16:19 CST" duration-ms="1154" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- deleteCategory -->
+        <test-method signature="deleteList()[pri:11, instance:com.jabbott.listr.WebappTests@5f9edf14]" started-at="2023-02-09T15:16:19 CST" name="deleteList" finished-at="2023-02-09T15:16:21 CST" duration-ms="1690" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- deleteList -->
+        <test-method is-config="true" signature="afterClass()[pri:0, instance:com.jabbott.listr.WebappTests@5f9edf14]" started-at="2023-02-09T15:16:21 CST" name="afterClass" finished-at="2023-02-09T15:16:21 CST" duration-ms="386" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterClass -->
+      </class> <!-- com.jabbott.listr.WebappTests -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>

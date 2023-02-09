@@ -1,0 +1,32 @@
+<div class = "container">
+    <div class = "row">
+        <h4 class = "logo">Listr</h4>
+    </div>
+    <div class = "row">
+        <div class = "col-md-12 center">
+            <div class = "signin-form">
+                <div class = "row">
+                    <h5>Sign In</h5>
+                </div>
+                <div class = "row">
+                    <div class = "row">
+                        <input class = "signin-input" type = "text" name = "email" id = "email" placeholder = "Email" [(ngModel)] = "emailInput" />
+                    </div>
+                    <div class = "row">
+                        <input class = "signin-input" type = "password" name = "password" id = "password" placeholder = "Password" [(ngModel)] = "passwordInput" />
+                    </div>
+                    <div class = "row">
+                        <button class = "btn btn-primary signin-input" name = "signin-button" id = "signin-button" (click) = "signin()">Sign In</button>
+                    </div>
+                </div>
+            </div>
+            <div class = "center">
+                <h5>Not Registered?</h5>
+                <a class = "signup-link" href = "/signup">Sign Up</a>
+            </div>
+            <div class = "center" *ngIf = "signinFailed">
+                Sign In Failed
+            </div>
+        </div>
+    </div>
+</div>

@@ -26,27 +26,28 @@ public class WebappTests {
   }
   
   @Test(priority = 1)
-  public void signupUser() {
-	  driver.get("http://localhost:8080/signup");
+  public void signupUser() throws InterruptedException {
+	  driver.get("http://localhost:4200/signup");
 	  driver.findElement(By.id("firstName")).sendKeys("John");
 	  driver.findElement(By.id("email")).sendKeys("test");
 	  driver.findElement(By.id("password")).sendKeys("test");
-	  driver.findElement(By.id("signupButton")).click();
-	  
-	  if(driver.findElement(By.id("signup-success-message")).isDisplayed()) {
-		  return;
+	  driver.findElement(By.id("signup-button")).click();
+	  synchronized(driver) {
+		  driver.wait(500);
+		  Assert.assertEquals(driver.findElement(By.id("signup-success-message")).isDisplayed(), true);
 	  }
+	  
   }
   
   @Test(priority = 2)
   public void userLogin() throws InterruptedException {
-	  driver.get("http://localhost:8080/");
+	  driver.get("http://localhost:4200/");
 	  driver.findElement(By.id("email")).sendKeys("test");
 	  driver.findElement(By.id("password")).sendKeys("test");
-	  driver.findElement(By.id("signinButton")).click();
+	  driver.findElement(By.id("signin-button")).click();
 	  synchronized (driver) {
 		  driver.wait(1000);
-		  Assert.assertEquals(driver.getCurrentUrl(), "http://localhost:8080/listspage");
+		  Assert.assertEquals(driver.getCurrentUrl(), "http://localhost:4200/listspage");
 	  }
 	  
   }
@@ -105,7 +106,7 @@ public class WebappTests {
 		  driver.findElement(By.id("editListInput")).clear();
 		  driver.findElement(By.id("editListInput")).sendKeys("Test List Edited");
 		  driver.findElement(By.id("editListModalButton")).click();
-		  driver.get("http://localhost:8080/listspage");
+		  //driver.get("http://localhost:4200/listspage");
 		  driver.wait(500);
 		  WebElement listElement = driver.findElement(By.className("listName"));
 		  
@@ -122,7 +123,7 @@ public class WebappTests {
 		  driver.findElement(By.id("editCategoryInput")).clear();
 		  driver.findElement(By.id("editCategoryInput")).sendKeys("Test Category Edited");
 		  driver.findElement(By.id("updateCategoryModalButton")).click();
-		  driver.get("http://localhost:8080/listspage");
+		  //driver.get("http://localhost:4200/listspage");
 		  driver.wait(500);
 		  WebElement categoryElement = driver.findElement(By.id("Test Category Edited"));
 		  
@@ -141,11 +142,11 @@ public class WebappTests {
 		  driver.findElement(By.id("editItemInput")).clear();
 		  driver.findElement(By.id("editItemInput")).sendKeys("Test Item Edited");
 		  driver.findElement(By.id("editItemModalButton")).click();
-		  driver.get("http://localhost:8080/listspage");
+		  //driver.get("http://localhost:4200/listspage");
 		  driver.wait(500);
 		  driver.findElement(By.id("Test Category Edited")).click();
 		  driver.wait(500);
-		  WebElement itemElement = driver.findElement(By.className("itemName"));
+		  WebElement itemElement = driver.findElement(By.id("itemName"));
 		  
 		  Assert.assertEquals(itemElement.getText(), "Test Item Edited");
 		  
@@ -172,7 +173,7 @@ public class WebappTests {
 		  driver.findElement(By.id("deleteCategoryButton")).click();
 		  driver.findElement(By.id("deleteCategoryModalButton")).click();
 		  driver.wait(500);
-		  driver.get("http://localhost:8080/listspage");
+		  //driver.get("http://localhost:4200/listspage");
 		  driver.wait(500);
 		  
 		  
@@ -189,7 +190,7 @@ public class WebappTests {
 		  driver.findElement(By.id("deleteListButton")).click();
 		  driver.findElement(By.id("removeListModalButton")).click();
 		  driver.wait(500);
-		  driver.get("http://localhost:8080/listspage");
+		  //driver.get("http://localhost:4200/listspage");
 		  driver.wait(500);
 		  
 		  Assert.expectThrows(NoSuchElementException.class, () -> {

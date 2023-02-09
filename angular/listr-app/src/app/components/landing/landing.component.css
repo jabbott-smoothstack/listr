@@ -1,0 +1,25 @@
+.logo {
+    font-size: 3rem;
+}
+
+.center {
+    margin: auto;
+    text-align: center;
+}
+
+.signin-input {
+    max-width: 15rem;
+    margin: auto;
+    padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+}
+
+.signin-form {
+    margin: 5rem 25rem 3rem 25rem;
+    padding: 7rem 7rem 7rem 7rem;
+    border: solid 1px;
+    border-radius: 20px;
+}
+
+.signup-link {
+    text-decoration: none;
+}

@@ -18,7 +18,7 @@ import com.jabbott.listr.model.List;
 import com.jabbott.listr.service.ListService;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:8080")
+@CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
 public class ListController {
 	
 	@Autowired

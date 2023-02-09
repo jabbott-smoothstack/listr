@@ -20,7 +20,7 @@ import com.jabbott.listr.model.Category;
 import com.jabbott.listr.service.CategoryService;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:8080")
+@CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
 public class CategoryController {
 	
 	@Autowired
